@@ -1,0 +1,46 @@
+<%= form_for(@estabelecimento) do |f| %>
+  <% if @estabelecimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estabelecimento.errors.count, "error") %> prohibited this estabelecimento from being saved:</h2>
+
+      <ul>
+      <% @estabelecimento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div style="">
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :endereco %><br>
+    <%= f.text_field :endereco %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :razao_social %><br>
+    <%= f.text_field :razao_social %>
+  </div>
+  <div class="field">
+    <%= f.label :responsavel %><br>
+    <%= f.text_field :responsavel %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_responsavel %><br>
+    <%= f.text_field :tel_responsavel %>
+  </div>
+  <div class="field">
+    <%= f.label :codigo %><br>
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

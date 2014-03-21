@@ -1,0 +1,36 @@
+<%= render 'shared/menu' %>
+<div class="container">
+<h1>Listing cardapios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Estabelecimento</th>
+      <th>Descricao</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cardapios.each do |cardapio| %>
+      <tr>
+        <td><%= cardapio.name %></td>
+        <td><%= cardapio.estabelecimento %></td>
+        <td><%= cardapio.descricao %></td>
+        <td><%= cardapio.status %></td>
+        <td><%= link_to 'Show', cardapio %></td>
+        <td><%= link_to 'Edit', edit_cardapio_path(cardapio) %></td>
+        <td><%= link_to 'Destroy', cardapio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo cardápio', new_cardapio_path %>
+</div>

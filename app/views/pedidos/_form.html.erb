@@ -1,0 +1,31 @@
+<div class="container">
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Produto</label><br>
+    <%= collection_select(:produto, :produto_id, Produto.all, :id, :reason, prompt: 'selecione o Produto') %>
+  </div>
+  <div class="field">
+    <label>Mesa:</label><br>
+    <%#= collection_select(:mesa, :mesa_id, Mesa.all, :id, :reason, prompt: 'selecione a Mesa') %>
+  </div>
+  <div class="field">
+   <label>Observação:</label><br>
+    <%= f.text_area :observacao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

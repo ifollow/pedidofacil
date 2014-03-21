@@ -1,0 +1,42 @@
+<nav id="menu">
+  <center><ul>
+    <li><%= link_to "Pedidos", pedidos_path, :remote => true %></li>
+    <li><%= link_to "Mesas", mesas_path, :remote => true %></li>
+    <li><%= link_to "Cardápios", cardapios_path, :remote => true %></li>
+    <li><%= link_to "Produtos", produtos_path, :remote => true %></li>
+    <li><a href="#">Relatórios</a></li>
+    <li><%= link_to "Sair", :controller => "gestor", :action => "reset_session" %></li>
+  </ul></center>
+</nav>
+<div class="container">
+
+<table id="pattern-style-b" summary="Meeting Results">
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Mesa</th>
+      <th scope="col">Observacao</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+      <tr>
+        <td><%= pedido.produto %></td>
+        <td><%= pedido.mesa.numero %></td>
+        <td><%= pedido.observacao %></td>
+        <td><%= link_to 'Mostrar', pedido %></td>
+        <td><%= link_to 'Editar', edit_pedido_path(pedido) %></td>
+        <td><%= link_to 'Deletar', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar pedido', new_pedido_path, :style => "width:130px; margin-left:40px; padding-left:10px; height:25px; border:none; background:#01334e; color:white; float:left;" %>
+</div>

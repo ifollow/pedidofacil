@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @estabelecimento.nome %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @estabelecimento.endereco %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @estabelecimento.telefone %>
+</p>
+
+<p>
+  <strong>Razao social:</strong>
+  <%= @estabelecimento.razao_social %>
+</p>
+
+<p>
+  <strong>Responsavel:</strong>
+  <%= @estabelecimento.responsavel %>
+</p>
+
+<p>
+  <strong>Tel responsavel:</strong>
+  <%= @estabelecimento.tel_responsavel %>
+</p>
+
+<p>
+  <strong>Image restaurante:</strong>
+  <%= @estabelecimento.image_restaurante %>
+</p>
+
+<%= link_to 'Edit', edit_estabelecimento_path(@estabelecimento) %> |
+<%= link_to 'Back', estabelecimentos_path %>

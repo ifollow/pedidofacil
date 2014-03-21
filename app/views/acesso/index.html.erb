@@ -1,0 +1,25 @@
+<% if flash[ :alert ] %>
+    <% content_for :head do %>
+        <script type="text/javascript">
+            document.observe('dom:loaded', function() {
+                alert("<%= flash[ :alert ] %>");
+            });
+        </script>
+    <% end %>
+<% end %>
+<div id="conteudo">
+	<div id="boxacesso">
+		<center><h2>Informe o seu código de acesso</h2></center>
+		<div style="color:red;">
+		<center><%= flash_message %></center>
+		</div>
+		<%= form_tag("acesso/valida_user", :method => "post") do %>
+
+			
+
+			<%= password_field_tag "codigo", nil , :style => "width:320px; height:40px; margin-left:40px;  ", :placeholder => "Seu código" %><br />
+			<%= submit_tag "Acessar", :style => "width:90%; background:#01334e; height:30px; color:white; border:none; margin-top:30px; margin-left:25px;" %>
+			
+		<% end %>
+	</div>
+</div>

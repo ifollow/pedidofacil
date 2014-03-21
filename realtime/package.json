@@ -1,0 +1,11 @@
+{
+  "name": "PedidoFacil",
+  "version": "1.0.14",
+  "description": "Webserver in realtime app pedidofacil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Ricardo MoSh",
+  "license": "ISC"
+}

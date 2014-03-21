@@ -1,0 +1,25 @@
+<%= form_for(@mesa) do |f| %>
+  <% if @mesa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mesa.errors.count, "error") %> prohibited this mesa from being saved:</h2>
+
+      <ul>
+      <% @mesa.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero %><br>
+    <%= f.number_field :numero %>
+  </div>
+  <div class="field">
+
+    <%= hidden_field_tag :estabelecimento , session[:id_estabelecimento] %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Cadastrar mesa" %>
+  </div>
+<% end %>

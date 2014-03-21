@@ -1,0 +1,30 @@
+<%= render 'shared/menu' %>
+<div class="container">
+<table>
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Estabelecimento</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mesas.each do |mesa| %>
+      <tr>
+        <td><%= mesa.numero %></td>
+        <td><%= mesa.estabelecimento %></td>
+        <td><%= link_to 'Mostrar', mesa %></td>
+        <td><%= link_to 'Editar', edit_mesa_path(mesa) %></td>
+        <td><%= link_to 'Deletar', mesa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Mesa', new_mesa_path %>
+</div>
