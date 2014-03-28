@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321055025) do
+ActiveRecord::Schema.define(version: 20140327050355) do
 
   create_table "cardapios", force: true do |t|
     t.string   "name"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20140321055025) do
     t.string   "cidade"
     t.string   "inscricao_estadual"
   end
+
+  create_table "estoques", force: true do |t|
+    t.integer  "produto_id"
+    t.integer  "quantidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "estabelecimento_id"
+  end
+
+  add_index "estoques", ["estabelecimento_id"], name: "index_estoques_on_estabelecimento_id"
+  add_index "estoques", ["produto_id"], name: "index_estoques_on_produto_id"
 
   create_table "funcionarios", force: true do |t|
     t.integer  "estabelecimento_id"
@@ -73,9 +84,13 @@ ActiveRecord::Schema.define(version: 20140321055025) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "estabelecimento_id"
+    t.integer  "quantidade"
+    t.integer  "funcionario_id"
+    t.date     "datapedido"
   end
 
   add_index "pedidos", ["estabelecimento_id"], name: "index_pedidos_on_estabelecimento_id"
+  add_index "pedidos", ["funcionario_id"], name: "index_pedidos_on_funcionario_id"
   add_index "pedidos", ["mesa_id"], name: "index_pedidos_on_mesa_id"
   add_index "pedidos", ["produto_id"], name: "index_pedidos_on_produto_id"
 

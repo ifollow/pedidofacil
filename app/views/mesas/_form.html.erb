@@ -14,10 +14,11 @@
   <div class="field">
     <%= f.label :numero %><br>
     <%= f.number_field :numero %>
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
   </div>
   <div class="field">
 
-    <%= hidden_field_tag :estabelecimento , session[:id_estabelecimento] %>
+    
   </div>
   <div class="actions">
     <%= f.submit "Cadastrar mesa" %>

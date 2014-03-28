@@ -1,3 +1,4 @@
+
 <%= form_for(@produto) do |f| %>
   <% if @produto.errors.any? %>
     <div id="error_explanation">
@@ -20,14 +21,13 @@
     <%= f.text_field :preco %>
   </div>
   <div class="field">
-    <%= f.label :cardapio_id %><br>
-    <%= f.text_field :cardapio_id %>
+    <%= f.label 'Cardápio' %><br>
+    <%= collection_select(:produto, :cardapio_id, Cardapio.where("estabelecimento_id =? AND status =?", session[:id_estabelecimento], true), :id, :name, :prompt => 'Selecione o Cardápio') %>
   </div>
   <div class="field">
-    <%= f.label :estabelecimento_id %><br>
-    <%= f.text_field :estabelecimento_id %>
+   <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Salvar' %>
   </div>
 <% end %>

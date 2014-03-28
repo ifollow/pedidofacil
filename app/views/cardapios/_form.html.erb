@@ -18,8 +18,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :estabelecimento_id %><br>
-    <%= collection_select(:estabelecimento, :estabelecimento_id, Estabelecimento.all, :id, :nome, prompt: 'selecione o estabelecimento') %>
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
   </div>
   <div class="field">
     <%= f.label :descricao %><br>
@@ -30,6 +29,6 @@
     <%= f.check_box :status %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Salvar' %>
   </div>
 <% end %>

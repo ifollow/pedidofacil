@@ -1,0 +1,30 @@
+<%= render 'shared/menu' %>
+<div class="container">
+<table id="pattern-style-b" summary="Meeting Results">
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estoques.each do |estoque| %>
+      <tr>
+        <td><%= estoque.produto.nome %></td>
+        <td><%= estoque.quantidade %></td>
+        <td><%= link_to 'Mostrar', estoque %></td>
+        <td><%= link_to 'Editar', edit_estoque_path(estoque) %></td>
+        <td><%= link_to 'Deletar', estoque, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Estoque', new_estoque_path, :style => "width:130px; margin-left:40px; padding-left:10px; padding-top:10px; height:20px; border:none; background:#01334e; color:white; float:left; text-decoration:none;" %>
+</div>

@@ -1,0 +1,26 @@
+<%= form_for(@estoque) do |f| %>
+  <% if @estoque.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estoque.errors.count, "error") %> prohibited this estoque from being saved:</h2>
+
+      <ul>
+      <% @estoque.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :produto_id %><br>
+     <%= collection_select(:estoque, :produto_id, Produto.where("estabelecimento_id =?", session[:id_estabelecimento]), :id, :nome, prompt: 'selecione o Produto') %>
+  </div>
+  <div class="field">
+    <%= f.label :quantidade %><br>
+    <%= f.number_field :quantidade %>
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Dar entrada" %>
+  </div>
+<% end %>

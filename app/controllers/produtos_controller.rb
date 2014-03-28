@@ -4,7 +4,7 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.all
+    @produtos = Produto.where("estabelecimento_id =? ", session[:id_estabelecimento])
   end
 
   # GET /produtos/1
@@ -28,7 +28,7 @@ class ProdutosController < ApplicationController
 
     respond_to do |format|
       if @produto.save
-        format.html { redirect_to @produto, notice: 'Produto was successfully created.' }
+        format.html { redirect_to produtos_path, notice: 'Produto criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @produto }
       else
         format.html { render action: 'new' }

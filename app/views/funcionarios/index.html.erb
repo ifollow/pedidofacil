@@ -1,18 +1,20 @@
-<h1>Listing funcionarios</h1>
+<%= render 'shared/menu' %>
+<div class="container">
 
-<table>
+<table id="pattern-style-b" summary="Meeting Results">
+
   <thead>
     <tr>
-      <th>Estabelecimento</th>
+     
       <th>Nome</th>
-      <th>Endereco</th>
+      <th>Endereço</th>
       <th>Cidade</th>
       <th>Telefone</th>
       <th>Celular</th>
       <th>Cpf</th>
       <th>Rg</th>
       <th>Salario</th>
-      <th>Percentual</th>
+      <th>Comissão</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,7 +24,7 @@
   <tbody>
     <% @funcionarios.each do |funcionario| %>
       <tr>
-        <td><%= funcionario.estabelecimento %></td>
+        
         <td><%= funcionario.nome %></td>
         <td><%= funcionario.endereco %></td>
         <td><%= funcionario.cidade %></td>
@@ -30,11 +32,11 @@
         <td><%= funcionario.celular %></td>
         <td><%= funcionario.cpf %></td>
         <td><%= funcionario.rg %></td>
-        <td><%= funcionario.salario %></td>
-        <td><%= funcionario.percentual %></td>
-        <td><%= link_to 'Show', funcionario %></td>
-        <td><%= link_to 'Edit', edit_funcionario_path(funcionario) %></td>
-        <td><%= link_to 'Destroy', funcionario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= number_to_currency_br(funcionario.salario) %></td>
+        <td><%= funcionario.percentual.to_s + "%" %></td>
+        <td><%= link_to 'Mostrar', funcionario %></td>
+        <td><%= link_to 'Editar', edit_funcionario_path(funcionario) %></td>
+        <td><%= link_to 'Deletar', funcionario, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +44,6 @@
 
 <br>
 
-<%= link_to 'New Funcionario', new_funcionario_path %>
+<%= link_to 'Novo Funcionario', new_funcionario_path, :style => "width:130px; margin-left:40px; padding-left:10px; padding-top:10px; height:20px; border:none; background:#01334e; color:white; float:left; text-decoration:none;" %>
+
+</div>

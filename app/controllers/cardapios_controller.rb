@@ -2,9 +2,10 @@ class CardapiosController < ApplicationController
   before_action :set_cardapio, only: [:show, :edit, :update, :destroy]
 
   # GET /cardapios
+
   # GET /cardapios.json
   def index
-    @cardapios = Cardapio.all
+    @cardapios = Cardapio.where("estabelecimento_id =? ", session[:id_estabelecimento])
   end
 
   # GET /cardapios/1

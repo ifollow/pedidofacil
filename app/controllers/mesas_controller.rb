@@ -4,7 +4,7 @@ class MesasController < ApplicationController
   # GET /mesas
   # GET /mesas.json
   def index
-    @mesas = Mesa.all
+    @mesas = Mesa.where("estabelecimento_id =? ", session[:id_estabelecimento])
     puts "estab = #{session[:id_estabelecimento]}"
   end
 
@@ -30,7 +30,7 @@ class MesasController < ApplicationController
 
     respond_to do |format|
       if @mesa.save
-        format.html { redirect_to @mesa, notice: 'Mesa was successfully created.' }
+        format.html { redirect_to @mesa, notice: 'Mesa criada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @mesa }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class MesasController < ApplicationController
   def update
     respond_to do |format|
       if @mesa.update(mesa_params)
-        format.html { redirect_to @mesa, notice: 'Mesa was successfully updated.' }
+        format.html { redirect_to @mesa, notice: 'Mesa atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

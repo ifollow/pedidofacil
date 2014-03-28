@@ -1,14 +1,13 @@
 <%= render 'shared/menu' %>
 <div class="container">
-<h1>Listing cardapios</h1>
 
-<table>
+<table id="pattern-style-b" summary="Meeting Results">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Estabelecimento</th>
+      <th>Nome</th>
       <th>Descricao</th>
       <th>Status</th>
+      <th>Qtd Produtos</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,12 +18,17 @@
     <% @cardapios.each do |cardapio| %>
       <tr>
         <td><%= cardapio.name %></td>
-        <td><%= cardapio.estabelecimento %></td>
         <td><%= cardapio.descricao %></td>
-        <td><%= cardapio.status %></td>
-        <td><%= link_to 'Show', cardapio %></td>
-        <td><%= link_to 'Edit', edit_cardapio_path(cardapio) %></td>
-        <td><%= link_to 'Destroy', cardapio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if cardapio.status == true %>
+        <td><%= "Ativo" %></td>
+        <% else %>
+        <td><%= "Inativo" %></td>
+        <% end %>
+        <% @quantidade = Produto.where("cardapio_id =? ", cardapio.id).count %>
+        <td> <%= @quantidade %> </td>
+        <td><%= link_to 'Mostrar', cardapio %></td>
+        <td><%= link_to 'Editar', edit_cardapio_path(cardapio) %></td>
+        <td><%= link_to 'Deletar', cardapio, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,5 +36,5 @@
 
 <br>
 
-<%= link_to 'Novo cardápio', new_cardapio_path %>
+<%= link_to 'Novo cardápio', new_cardapio_path, :style => "width:130px; margin-left:40px; padding-left:10px; padding-top:10px; height:20px; border:none; background:#01334e; color:white; float:left; text-decoration:none;" %>
 </div>

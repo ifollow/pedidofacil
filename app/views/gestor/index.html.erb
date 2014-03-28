@@ -1,6 +1,22 @@
 <%= render 'shared/menu' %>
 
 <div class="container">
-<h1></h1>
+<center><h4>Bem vindo, <%= @estabelecimento.nome %></h4></center>
+<% if @produtos <= 0 %>
+<div class="warning"><p><%= @mensagem_produtos %> Cadastre seus produtos <%= link_to "Criar novo produto.", produtos_path %></p></div>
+<% end %>
+<br />
+<% if @cardapios <= 0 %>
+<div class="warning"><p><%= @mensagem_cardapios %> Cadastre seus cardápios <%= link_to "Criar novo cardápio.", cardapios_path %></p></div>
+<% end %>
+<br />
+<% if @mesas <= 0 %>
+<div class="warning"><p><%= @mensagem_mesas %> Cadastre suas mesas <%= link_to "Criar nova mesa.", mesas_path %></p></div>
+<% end %>
+
+<% if @produtos > 0 and @cardapios > 0 and @mesas > 0 %>
+
+
+<% end %>
 
 </div>

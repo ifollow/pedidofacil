@@ -1,9 +1,11 @@
 <nav id="menu">
   <center><ul>
-    <li><%= link_to "Pedidos", pedidos_path, :remote => true %></li>
-    <li><%= link_to "Mesas", mesas_path, :remote => true %></li>
-    <li><%= link_to "Cardápios", cardapios_path, :remote => true %></li>
-    <li><%= link_to "Produtos", produtos_path, :remote => true %></li>
+    <li><%= link_to "Pedidos", pedidos_path %></li>
+    <li><%= link_to "Mesas", mesas_path %></li>
+    <li><%= link_to "Cardápios", cardapios_path %></li>
+    <li><%= link_to "Produtos", produtos_path %></li>
+    <li><%= link_to "Estoque", estoques_path %></li>
+    <li><%= link_to "Funcionários", funcionarios_path %></li>
     <li><a href="#">Relatórios</a></li>
     <li><%= link_to "Sair", :controller => "gestor", :action => "reset_session" %></li>
   </ul></center>

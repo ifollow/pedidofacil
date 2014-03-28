@@ -4,7 +4,7 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
-    @pedidos = Pedido.where("")
+    @pedidos = Pedido.where("estabelecimento_id =? ", session[:id_estabelecimento])
   end
 
   # GET /pedidos/1
@@ -26,9 +26,19 @@ class PedidosController < ApplicationController
   def create
     @pedido = Pedido.new(pedido_params)
 
+    @abater_estoque = pedido_params[:quantidade]
+
+    @busca_estoque_produto = Estoque.where("produto_id =?", pedido_params[:produto_id]).first
+
+    @aux = @busca_estoque_produto.quantidade.to_i - @abater_estoque.to_i
+
+    #puts @aux
+
+    @busca_estoque_produto.update_attributes(:quantidade => @aux)
+
     respond_to do |format|
       if @pedido.save
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
+        format.html { redirect_to pedidos_path, notice: 'Pedido efetuado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
         format.html { render action: 'new' }
@@ -69,6 +79,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:produto_id, :mesa_id, :observacao)
+      params.require(:pedido).permit(:produto_id, :mesa_id, :observacao, :estabelecimento_id, :quantidade, :funcionario_id)
     end
 end

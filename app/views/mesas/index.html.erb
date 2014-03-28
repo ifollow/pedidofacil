@@ -1,11 +1,11 @@
 <%= render 'shared/menu' %>
 <div class="container">
-<table>
+<table id="pattern-style-b" summary="Meeting Results">
   <thead>
     <tr>
       <th>Numero</th>
-      <th>Estabelecimento</th>
-      <th></th>
+      
+     
       <th></th>
       <th></th>
     </tr>
@@ -15,10 +15,10 @@
     <% @mesas.each do |mesa| %>
       <tr>
         <td><%= mesa.numero %></td>
-        <td><%= mesa.estabelecimento %></td>
-        <td><%= link_to 'Mostrar', mesa %></td>
+        
+        
         <td><%= link_to 'Editar', edit_mesa_path(mesa) %></td>
-        <td><%= link_to 'Deletar', mesa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Deletar', mesa, method: :delete, data: { confirm: 'Tem certeza que deseja excluir a mesa ?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,5 +26,5 @@
 
 <br>
 
-<%= link_to 'Nova Mesa', new_mesa_path %>
+<%= link_to 'Nova Mesa', new_mesa_path, :style => "width:130px; margin-left:40px; padding-left:10px; padding-top:10px; height:20px; border:none; background:#01334e; color:white; float:left; text-decoration:none;" %>
 </div>

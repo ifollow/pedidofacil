@@ -14,18 +14,31 @@
 
   <div class="field">
     <label>Produto</label><br>
-    <%= collection_select(:produto, :produto_id, Produto.all, :id, :reason, prompt: 'selecione o Produto') %>
+    <% @query_produto = Produto.where("estabelecimento_id = ?", session[:id_estabelecimento]) %>
+    <%= collection_select(:pedido, :produto_id, @query_produto, :id, :nome, prompt: 'selecione o Produto') %>
+  </div>
+  <div class="field">
+    <label>Quantidade</label><br>
+    
+    <%= f.text_field :quantidade %>
   </div>
   <div class="field">
     <label>Mesa:</label><br>
-    <%#= collection_select(:mesa, :mesa_id, Mesa.all, :id, :reason, prompt: 'selecione a Mesa') %>
+    <% @query_mesa = Mesa.where("estabelecimento_id = ?", session[:id_estabelecimento]) %>
+    <%= collection_select(:pedido, :mesa_id, @query_mesa, :id, :numero, prompt: 'selecione a Mesa') %>
+  </div>
+   <div class="field">
+    <label>Funcionário</label><br>
+    <% @query_funcionario = Funcionario.where("estabelecimento_id = ?", session[:id_estabelecimento]) %>
+    <%= collection_select(:pedido, :funcionario_id, @query_funcionario, :id, :nome, prompt: 'selecione o Funcionario') %>
   </div>
   <div class="field">
    <label>Observação:</label><br>
     <%= f.text_area :observacao %>
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Cadastrar Pedido" %>
   </div>
 <% end %>
 </div>
