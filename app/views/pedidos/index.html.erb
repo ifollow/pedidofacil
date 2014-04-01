@@ -8,9 +8,10 @@
       <th scope="col">Mesa</th>
       <th scope="col">Observacao</th>
       <th scope="col">Funcionário</th>
+      <th scope="col">Situação</th>
       <th scope="col"></th>
       <th scope="col"></th>
-      <th scope="col"></th>
+      
     </tr>
   </thead>
 
@@ -20,11 +21,21 @@
         <td><%= pedido.produto.nome %></td>
         <td><%= pedido.mesa.numero %></td>
         <td><%= pedido.observacao %></td>
+       
         <%  funcionario  =  Funcionario.find(pedido.funcionario_id) %>
         <td><%= funcionario.nome %></td>
-        <td><%= link_to 'Mostrar', pedido %></td>
+         <% if pedido.flag %>
+        <td>Pago</td>
+        <% else %>
+        <td>Em aberto</td>
+        <% end %>
+        <% if pedido.flag %>
+
+        <% else %>
+        <td><%= link_to 'Fechar', fechamento_balcao_path(pedido)  %></td>
+        <% end %>
         <td><%= link_to 'Editar', edit_pedido_path(pedido) %></td>
-        <td><%= link_to 'Deletar', pedido, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        
       </tr>
     <% end %>
   </tbody>

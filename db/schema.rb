@@ -11,7 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327050355) do
+ActiveRecord::Schema.define(version: 20140331175021) do
+
+  create_table "caixaanos", force: true do |t|
+    t.date     "datcai"
+    t.decimal  "dinheiro"
+    t.decimal  "cheque"
+    t.decimal  "cartao"
+    t.decimal  "prazo"
+    t.decimal  "pagtodiv"
+    t.decimal  "receb"
+    t.decimal  "salant"
+    t.decimal  "salprox"
+    t.decimal  "salcaixa"
+    t.integer  "estabelecimento_id"
+    t.string   "obscai"
+    t.time     "hormov"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "caixaanos", ["estabelecimento_id"], name: "index_caixaanos_on_estabelecimento_id"
+
+  create_table "caixadia", force: true do |t|
+    t.date     "datcai"
+    t.decimal  "dinheiro"
+    t.decimal  "cheque"
+    t.decimal  "cartao"
+    t.decimal  "prazo"
+    t.decimal  "pagtodiv"
+    t.decimal  "receb"
+    t.decimal  "salant"
+    t.decimal  "salprox"
+    t.decimal  "salcaixa"
+    t.integer  "estabelecimento_id"
+    t.string   "obscai"
+    t.time     "hormov"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "caixadia", ["estabelecimento_id"], name: "index_caixadia_on_estabelecimento_id"
 
   create_table "cardapios", force: true do |t|
     t.string   "name"
@@ -87,6 +127,7 @@ ActiveRecord::Schema.define(version: 20140327050355) do
     t.integer  "quantidade"
     t.integer  "funcionario_id"
     t.date     "datapedido"
+    t.boolean  "flag"
   end
 
   add_index "pedidos", ["estabelecimento_id"], name: "index_pedidos_on_estabelecimento_id"
@@ -105,5 +146,41 @@ ActiveRecord::Schema.define(version: 20140327050355) do
 
   add_index "produtos", ["cardapio_id"], name: "index_produtos_on_cardapio_id"
   add_index "produtos", ["estabelecimento_id"], name: "index_produtos_on_estabelecimento_id"
+
+  create_table "vendabalcaos", force: true do |t|
+    t.decimal  "total"
+    t.decimal  "dinheiro"
+    t.decimal  "cartao"
+    t.decimal  "cheque"
+    t.decimal  "nota"
+    t.integer  "estabelecimento_id"
+    t.integer  "funcionario_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "troco"
+    t.integer  "pedido_id"
+  end
+
+  add_index "vendabalcaos", ["estabelecimento_id"], name: "index_vendabalcaos_on_estabelecimento_id"
+  add_index "vendabalcaos", ["funcionario_id"], name: "index_vendabalcaos_on_funcionario_id"
+  add_index "vendabalcaos", ["pedido_id"], name: "index_vendabalcaos_on_pedido_id"
+
+  create_table "vendamesas", force: true do |t|
+    t.decimal  "total"
+    t.decimal  "dinheiro"
+    t.decimal  "cartao"
+    t.decimal  "cheque"
+    t.decimal  "nota"
+    t.integer  "mesa_id"
+    t.integer  "estabelecimento_id"
+    t.integer  "funcionario_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "troco"
+  end
+
+  add_index "vendamesas", ["estabelecimento_id"], name: "index_vendamesas_on_estabelecimento_id"
+  add_index "vendamesas", ["funcionario_id"], name: "index_vendamesas_on_funcionario_id"
+  add_index "vendamesas", ["mesa_id"], name: "index_vendamesas_on_mesa_id"
 
 end

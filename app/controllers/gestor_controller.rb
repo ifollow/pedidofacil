@@ -1,6 +1,6 @@
 class GestorController < ApplicationController
   def index
-  	if session[:logged]
+  	if session[:logged] == true
       @pedidos = Pedido.where("")
 
       @estabelecimento = Estabelecimento.find(session[:id_estabelecimento])
@@ -32,7 +32,7 @@ class GestorController < ApplicationController
   end
 
    def reset_session
-    session :off  
+    session[:logged] = false
     redirect_to root_path
   end
 

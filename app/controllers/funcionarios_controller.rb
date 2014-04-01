@@ -28,7 +28,7 @@ class FuncionariosController < ApplicationController
 
     respond_to do |format|
       if @funcionario.save
-        format.html { redirect_to @funcionario, notice: 'Funcionario was successfully created.' }
+        format.html { redirect_to funcionarios_url, notice: 'Funcionario criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @funcionario }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class FuncionariosController < ApplicationController
   def update
     respond_to do |format|
       if @funcionario.update(funcionario_params)
-        format.html { redirect_to @funcionario, notice: 'Funcionario was successfully updated.' }
+        format.html { redirect_to funcionarios_url, notice: 'Funcionario atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

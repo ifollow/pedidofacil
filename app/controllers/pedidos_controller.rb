@@ -4,7 +4,7 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
-    @pedidos = Pedido.where("estabelecimento_id =? ", session[:id_estabelecimento])
+    @pedidos = Pedido.where("estabelecimento_id =? AND created_at >?", session[:id_estabelecimento], DateTime.now.beginning_of_day)
   end
 
   # GET /pedidos/1
@@ -38,7 +38,7 @@ class PedidosController < ApplicationController
 
     respond_to do |format|
       if @pedido.save
-        format.html { redirect_to pedidos_path, notice: 'Pedido efetuado com sucesso.' }
+        format.html { redirect_to pedidos_url, notice: 'Pedido efetuado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
         format.html { render action: 'new' }
@@ -52,7 +52,7 @@ class PedidosController < ApplicationController
   def update
     respond_to do |format|
       if @pedido.update(pedido_params)
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully updated.' }
+        format.html { redirect_to pedidos_url, notice: 'Pedido atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,14 +71,27 @@ class PedidosController < ApplicationController
     end
   end
 
+  def fechar
+    @pedido = Pedido.find(params[:id])
+    respond_to do |format|
+    if @pedido.update_attributes(:flag => true)
+    format.html { redirect_to pedidos_url, notice: 'Pedido fechado com sucesso.' }
+    end
+  end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pedido
       @pedido = Pedido.find(params[:id])
     end
 
+    def close_pedido
+      @pedido.update_attributes(:flag => true)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:produto_id, :mesa_id, :observacao, :estabelecimento_id, :quantidade, :funcionario_id)
+      params.require(:pedido).permit(:produto_id, :mesa_id, :observacao, :estabelecimento_id, :quantidade, :funcionario_id, :datapedido, :flag)
     end
 end

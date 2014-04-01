@@ -28,7 +28,7 @@ class EstoquesController < ApplicationController
 
     respond_to do |format|
       if @estoque.save
-        format.html { redirect_to @estoque, notice: 'Estoque was successfully created.' }
+        format.html { redirect_to estoques_url, notice: 'Estoque criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @estoque }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class EstoquesController < ApplicationController
   def update
     respond_to do |format|
       if @estoque.update(estoque_params)
-        format.html { redirect_to @estoque, notice: 'Estoque was successfully updated.' }
+        format.html { redirect_to estoques_url, notice: 'Estoque atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

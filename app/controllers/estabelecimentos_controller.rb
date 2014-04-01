@@ -28,7 +28,7 @@ class EstabelecimentosController < ApplicationController
 
     respond_to do |format|
       if @estabelecimento.save
-        format.html { redirect_to @estabelecimento, notice: 'Estabelecimento was successfully created.' }
+        format.html { redirect_to estabelecimentos_url, notice: 'Estabelecimento criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @estabelecimento }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class EstabelecimentosController < ApplicationController
   def update
     respond_to do |format|
       if @estabelecimento.update(estabelecimento_params)
-        format.html { redirect_to @estabelecimento, notice: 'Estabelecimento was successfully updated.' }
+        format.html { redirect_to estabelecimentos_url, notice: 'Estabelecimento atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

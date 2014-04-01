@@ -1,0 +1,51 @@
+<h1>Listing caixadia</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datcai</th>
+      <th>Dinheiro</th>
+      <th>Cheque</th>
+      <th>Cartao</th>
+      <th>Prazo</th>
+      <th>Pagtodiv</th>
+      <th>Receb</th>
+      <th>Salant</th>
+      <th>Salprox</th>
+      <th>Salcaixa</th>
+      <th>Estabelecimento</th>
+      <th>Obscai</th>
+      <th>Hormov</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caixadia.each do |caixadium| %>
+      <tr>
+        <td><%= caixadium.datcai %></td>
+        <td><%= caixadium.dinheiro %></td>
+        <td><%= caixadium.cheque %></td>
+        <td><%= caixadium.cartao %></td>
+        <td><%= caixadium.prazo %></td>
+        <td><%= caixadium.pagtodiv %></td>
+        <td><%= caixadium.receb %></td>
+        <td><%= caixadium.salant %></td>
+        <td><%= caixadium.salprox %></td>
+        <td><%= caixadium.salcaixa %></td>
+        <td><%= caixadium.estabelecimento %></td>
+        <td><%= caixadium.obscai %></td>
+        <td><%= caixadium.hormov %></td>
+        <td><%= link_to 'Show', caixadium %></td>
+        <td><%= link_to 'Edit', edit_caixadium_path(caixadium) %></td>
+        <td><%= link_to 'Destroy', caixadium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caixadium', new_caixadium_path %>

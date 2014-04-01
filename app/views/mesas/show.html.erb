@@ -1,14 +1,55 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/menu' %>
+<div class="container">
+	
+		
+<h1>Mesa: {<%= @mesa.numero %>}</h1>
 
-<p>
-  <strong>Numero:</strong>
-  <%= @mesa.numero %>
-</p>
+<table id="pattern-style-b" summary="Meeting Results">
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Mesa</th>
+      <th scope="col">Observacao</th>
+      <th scope="col">Funcionário</th>
+      <th scope="col">Situação</th>
+      <th scope="col">Valor</th>
+      <th scope="col"></th>
+      
+    </tr>
+  </thead>
 
-<p>
-  <strong>Estabelecimento:</strong>
-  <%= @mesa.estabelecimento %>
-</p>
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+    <% @quantidade = pedido.quantidade %>
+    <% @valor_pedido = pedido.produto.preco.to_f * @quantidade %>
+    <% @total = @total.to_f + @valor_pedido.to_f %>
+      <tr>
+        <td><%= pedido.produto.nome %></td>
+        <td><%= pedido.mesa.numero %></td>
+        <td><%= pedido.observacao %></td>
+       
+        <%  funcionario  =  Funcionario.find(pedido.funcionario_id) %>
+        <td><%= funcionario.nome %></td>
+         <% if pedido.flag %>
+        <td>Pago</td>
+        <% else %>
+        <td>Em aberto</td>
+        <% end %>
+        <td><%= number_to_currency_br(pedido.produto.preco)  %></td>
+        
+        <td></td>
+        
+      </tr>
+    <% end %>
+
+    <td style="color:red;">Total: <%= number_to_currency_br(@total) %></td>
+  </tbody>
+</table>
+
+<%= link_to "Fechar mesa", fechamento_mesa_path(@mesa) %><br />
 
 <%= link_to 'Edit', edit_mesa_path(@mesa) %> |
 <%= link_to 'Back', mesas_path %>
+
+</div>
+

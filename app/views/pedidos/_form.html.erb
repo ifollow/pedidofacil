@@ -36,6 +36,8 @@
    <label>Observação:</label><br>
     <%= f.text_area :observacao %>
     <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
+    <%= f.hidden_field :datapedido , value: DateTime.now %>
+    <%= f.hidden_field :flag , value: false %>
   </div>
   <div class="actions">
     <%= f.submit "Cadastrar Pedido" %>

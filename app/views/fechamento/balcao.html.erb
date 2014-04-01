@@ -1,0 +1,80 @@
+<%= render 'shared/menu' %>
+<div class="container">
+<h1>Pedido: {Balcão}</h1>
+<table id="pattern-style-b" summary="Meeting Results">
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Observacao</th>
+      <th scope="col">Funcionário</th>
+      <th scope="col">Situação</th>
+      <th scope="col">Valor</th>
+      <th scope="col"></th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedido.each do |pedido| %>
+    <% @quantidade = pedido.quantidade %>
+    <% @valor_pedido = pedido.produto.preco.to_f * @quantidade %>
+    <% @total = @total.to_f + @valor_pedido.to_f %>
+      <tr>
+        <td><%= pedido.produto.nome %></td>
+        <td><%= pedido.quantidade %></td>
+        <td><%= pedido.observacao %></td>
+       
+        <%  @funcionario  =  Funcionario.find(pedido.funcionario_id) %>
+        <td><%= @funcionario.nome %></td>
+         <% if pedido.flag %>
+        <td>Pago</td>
+        <% else %>
+        <td>Em aberto</td>
+        <% end %>
+        <td><%= number_to_currency_br(pedido.produto.preco)  %></td>
+        
+        <td></td>
+        
+      </tr>
+    <% end %>
+
+    <td style="color:red;">Total: <%= number_to_currency_br(@total) %></td>
+  </tbody>
+</table>
+<hr />
+
+<h3>Fechar Pedido</h3>
+<%= form_for Vendabalcao.new do |f| %>
+
+
+  <div class="form-inputs">
+    <label style="color:#0144ed">Total: </label>
+    <%= f.text_field :total, :style => 'color:green; width:120px;  height:30px; font-size:18px;', :value => @total, :class => 'money' , :id => 'total' %>
+
+    <label style="color:#0144ed">Dinheiro: </label>
+    <%= f.text_field :dinheiro , :style => 'color:green; width:120px;  height:30px; font-size:18px;', :class => 'money' , :id => 'dinheiro' %>
+
+    <label style="color:#0144ed">Cartão: </label>
+    <%= f.text_field :cartao , :style => 'color:green; width:120px;  height:30px; font-size:18px;', :class => 'money'%>
+    <!--
+    <label style="color:#0144ed">Cheque: </label>
+    <%= f.text_field :cheque , :style => 'color:green; width:120px;  height:30px; font-size:18px;', :class => 'money'%> -->
+    <label style="color:#0144ed">Nota: </label>
+    <%= f.text_field :nota , :style => 'color:green; width:120px;  height:30px; font-size:18px;', :class => 'money'%>
+
+    <label style="color:#0144ed">Troco: </label>
+    <%= f.text_field :troco , :style => 'color:green; width:120px;  height:30px; font-size:18px;', :class => 'money', :id => 'troco'  %>
+
+   
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
+    <%= f.hidden_field :funcionario_id , value: @funcionario.id %>
+  </div>
+<br />
+  <div class="form-actions">
+    <%= f.submit "Fechar mesa" %>
+  </div>
+<% end %>
+</div>
+

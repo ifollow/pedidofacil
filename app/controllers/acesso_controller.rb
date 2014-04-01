@@ -1,5 +1,10 @@
 class AcessoController < ApplicationController
   def index
+    if session[:logged]
+
+      redirect_to :controller => 'gestor', :action => 'index'
+      
+    end
   end
 
   def valida_user

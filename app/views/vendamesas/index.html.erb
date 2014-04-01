@@ -1,0 +1,41 @@
+<h1>Listing vendamesas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Total</th>
+      <th>Dinheiro</th>
+      <th>Cartao</th>
+      <th>Cheque</th>
+      <th>Nota</th>
+      <th>Mesa</th>
+      <th>Estabelecimento</th>
+      <th>Funcionario</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendamesas.each do |vendamesa| %>
+      <tr>
+        <td><%= vendamesa.total %></td>
+        <td><%= vendamesa.dinheiro %></td>
+        <td><%= vendamesa.cartao %></td>
+        <td><%= vendamesa.cheque %></td>
+        <td><%= vendamesa.nota %></td>
+        <td><%= vendamesa.mesa %></td>
+        <td><%= vendamesa.estabelecimento %></td>
+        <td><%= vendamesa.funcionario %></td>
+        <td><%= link_to 'Show', vendamesa %></td>
+        <td><%= link_to 'Edit', edit_vendamesa_path(vendamesa) %></td>
+        <td><%= link_to 'Destroy', vendamesa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vendamesa', new_vendamesa_path %>

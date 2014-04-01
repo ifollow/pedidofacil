@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @vendamesa.total %>
+</p>
+
+<p>
+  <strong>Dinheiro:</strong>
+  <%= @vendamesa.dinheiro %>
+</p>
+
+<p>
+  <strong>Cartao:</strong>
+  <%= @vendamesa.cartao %>
+</p>
+
+<p>
+  <strong>Cheque:</strong>
+  <%= @vendamesa.cheque %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @vendamesa.nota %>
+</p>
+
+<p>
+  <strong>Mesa:</strong>
+  <%= @vendamesa.mesa %>
+</p>
+
+<p>
+  <strong>Estabelecimento:</strong>
+  <%= @vendamesa.estabelecimento %>
+</p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @vendamesa.funcionario %>
+</p>
+
+<%= link_to 'Edit', edit_vendamesa_path(@vendamesa) %> |
+<%= link_to 'Back', vendamesas_path %>

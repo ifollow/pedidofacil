@@ -1,0 +1,39 @@
+<h1>Listing vendabalcaos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Total</th>
+      <th>Dinheiro</th>
+      <th>Cartao</th>
+      <th>Cheque</th>
+      <th>Nota</th>
+      <th>Estabelecimento</th>
+      <th>Funcionario</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendabalcaos.each do |vendabalcao| %>
+      <tr>
+        <td><%= vendabalcao.total %></td>
+        <td><%= vendabalcao.dinheiro %></td>
+        <td><%= vendabalcao.cartao %></td>
+        <td><%= vendabalcao.cheque %></td>
+        <td><%= vendabalcao.nota %></td>
+        <td><%= vendabalcao.estabelecimento %></td>
+        <td><%= vendabalcao.funcionario %></td>
+        <td><%= link_to 'Show', vendabalcao %></td>
+        <td><%= link_to 'Edit', edit_vendabalcao_path(vendabalcao) %></td>
+        <td><%= link_to 'Destroy', vendabalcao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vendabalcao', new_vendabalcao_path %>

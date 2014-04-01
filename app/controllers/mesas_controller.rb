@@ -11,6 +11,7 @@ class MesasController < ApplicationController
   # GET /mesas/1
   # GET /mesas/1.json
   def show
+    @pedidos = Pedido.where("mesa_id =? AND estabelecimento_id =? AND created_at >=? AND flag =?", params[:id], session[:id_estabelecimento], DateTime.now.beginning_of_day, false)
   end
 
   # GET /mesas/new
@@ -30,7 +31,7 @@ class MesasController < ApplicationController
 
     respond_to do |format|
       if @mesa.save
-        format.html { redirect_to @mesa, notice: 'Mesa criada com sucesso.' }
+        format.html { redirect_to mesas_url, notice: 'Mesa criada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @mesa }
       else
         format.html { render action: 'new' }
@@ -44,7 +45,7 @@ class MesasController < ApplicationController
   def update
     respond_to do |format|
       if @mesa.update(mesa_params)
-        format.html { redirect_to @mesa, notice: 'Mesa atualizada com sucesso.' }
+        format.html { redirect_to mesas_url, notice: 'Mesa atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

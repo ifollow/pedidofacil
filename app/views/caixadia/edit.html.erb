@@ -1,0 +1,11 @@
+<%= render 'shared/menu' %>
+<div class="container">
+<% if @vazio %>
+<div class="warning" >
+	<p>Seu caixa está Zerado!</p>
+</div><br />
+<%= render 'form' %>
+<% else %>
+<%= render 'form' %>
+<% end %>
+</div>

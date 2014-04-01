@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @vendabalcao.total %>
+</p>
+
+<p>
+  <strong>Dinheiro:</strong>
+  <%= @vendabalcao.dinheiro %>
+</p>
+
+<p>
+  <strong>Cartao:</strong>
+  <%= @vendabalcao.cartao %>
+</p>
+
+<p>
+  <strong>Cheque:</strong>
+  <%= @vendabalcao.cheque %>
+</p>
+
+<p>
+  <strong>Nota:</strong>
+  <%= @vendabalcao.nota %>
+</p>
+
+<p>
+  <strong>Estabelecimento:</strong>
+  <%= @vendabalcao.estabelecimento %>
+</p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @vendabalcao.funcionario %>
+</p>
+
+<%= link_to 'Edit', edit_vendabalcao_path(@vendabalcao) %> |
+<%= link_to 'Back', vendabalcaos_path %>

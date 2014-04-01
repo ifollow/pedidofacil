@@ -1,5 +1,7 @@
+<center>
 <nav id="menu">
   <center><ul>
+    <li><%= link_to "Movimento de Caixa", :controller => 'caixadia', :action => 'new' %></li>
     <li><%= link_to "Pedidos", pedidos_path %></li>
     <li><%= link_to "Mesas", mesas_path %></li>
     <li><%= link_to "Cardápios", cardapios_path %></li>
@@ -10,3 +12,4 @@
     <li><%= link_to "Sair", :controller => "gestor", :action => "reset_session" %></li>
   </ul></center>
 </nav>
+</center>

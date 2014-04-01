@@ -1,0 +1,51 @@
+<h1>Listing caixaanos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datcai</th>
+      <th>Dinheiro</th>
+      <th>Cheque</th>
+      <th>Cartao</th>
+      <th>Prazo</th>
+      <th>Pagtodiv</th>
+      <th>Receb</th>
+      <th>Salant</th>
+      <th>Salprox</th>
+      <th>Salcaixa</th>
+      <th>Estabelecimento</th>
+      <th>Obscai</th>
+      <th>Hormov</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caixaanos.each do |caixaano| %>
+      <tr>
+        <td><%= caixaano.datcai %></td>
+        <td><%= caixaano.dinheiro %></td>
+        <td><%= caixaano.cheque %></td>
+        <td><%= caixaano.cartao %></td>
+        <td><%= caixaano.prazo %></td>
+        <td><%= caixaano.pagtodiv %></td>
+        <td><%= caixaano.receb %></td>
+        <td><%= caixaano.salant %></td>
+        <td><%= caixaano.salprox %></td>
+        <td><%= caixaano.salcaixa %></td>
+        <td><%= caixaano.estabelecimento %></td>
+        <td><%= caixaano.obscai %></td>
+        <td><%= caixaano.hormov %></td>
+        <td><%= link_to 'Show', caixaano %></td>
+        <td><%= link_to 'Edit', edit_caixaano_path(caixaano) %></td>
+        <td><%= link_to 'Destroy', caixaano, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caixaano', new_caixaano_path %>

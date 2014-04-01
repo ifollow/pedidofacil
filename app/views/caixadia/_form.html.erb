@@ -1,0 +1,100 @@
+<div style="margin-left:200px;">
+<%= simple_form_for @caixadium do |f| %>
+
+  <div style="width:510px; height:40px; background:black; padding-top:10px; margin-top:-15px;">
+    <center><h2 style="color:#ADFF2F;">MOVIMENTO DO CAIXA</h2></center>
+  </div><br/>
+  <div class="field">
+    <label style="color:blue;">Data do caixa.......................................</label>
+    <%= f.date_select :datcai, :style => 'color:blue;' %>
+  </div>
+    <div class="field">
+    <label style="color:green;">Saldo do Caixa Anterior/Troco.............................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :salant, :style => 'color:green; width:120px;  height:40px; font-size:18px;', :placeholder => '0.00', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :salant, :style => 'color:green; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.salant, :class => 'money'  %>
+    <% end %>
+  </div>
+  <div class="field">
+    <label style="color:#2E8B57;">Valor em Dinheiro.............................................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :dinheiro, :style => 'color:#2E8B57; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00', disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :dinheiro, :style => 'color:#2E8B57; width:120px;  height:40px; font-size:18px;', :placeholder => @dinheiro, disabled: true, hint: 'You cannot change your username.', :class => 'money' %>
+    <% end %>
+  </div>
+  <div class="field">
+    <label style="color:#8B4513;">Valor em Cheques.............................................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :cheque, :style => 'color:#8B4513; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00', disabled: true, hint: 'You cannot change your username.' , :class => 'money' %>
+    <% else %>
+    <%= f.text_field :cheque, :style => 'color:#8B4513; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.cheque, disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% end %>
+  </div>
+  <div class="field">
+    <label style="color:#9400D3;">Valor em Cartão...............................................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :cartao, :style => 'color:#9400D3; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00', disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :cartao, :style => 'color:#9400D3; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.cartao, disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% end %>
+  </div>
+  <div class="field">
+    <label style="color:#FF0000;">Valor das Vendas a Prazo...................................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :prazo, :style => 'color:#FF0000; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00' , disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :prazo, :style => 'color:#FF0000; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.prazo, disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% end %>
+  </div>
+    <div class="field">
+    <label style="color:#000080;">Valor dos Recebimentos.....................................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :receb, :style => 'color:#000080; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00', disabled: true, hint: 'You cannot change your username.' , :class => 'money' %>
+    <% else %>
+    <%= f.text_field :receb, :style => 'color:#000080; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.receb, disabled: true, hint: 'You cannot change your username.' , :class => 'money' %>
+    <% end %>
+  </div>
+  <div class="field">
+    <label style="color:#B8860B;">Valor dos Pagamentos Diversos............................(-)</label>
+    <% if @vazio %>
+    <%= f.text_field :pagtodiv, :style => 'color:#B8860B; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :pagtodiv, :style => 'color:#B8860B; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.pagtodiv, :class => 'money'  %>
+    <% end %>
+  </div>
+    <div class="field">
+    <label style="color:#0000CD;">Saldo Atual do Caixa..........................................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :salcaixa, :style => 'color:#0000CD; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00' , disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :salcaixa, :style => 'color:#0000CD; width:120px;  height:40px; font-size:18px;', :placeholder => @saldo_atual , disabled: true, hint: 'You cannot change your username.', :class => 'money'  %>
+    <% end %>
+  </div>
+  <div class="field">
+    <label style="color:#228B22;">Saldo para o Próximo Caixa/Troco........................(+)</label>
+    <% if @vazio %>
+    <%= f.text_field :salprox, :style => 'color:#228B22; width:120px;  height:40px; font-size:18px;', :placeholder => '0,00', :class => 'money'  %>
+    <% else %>
+    <%= f.text_field :salprox, :style => 'color:#228B22; width:120px;  height:40px; font-size:18px;', :placeholder => @caixadium.salprox, :class => 'money'  %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :estabelecimento_id , value: session[:id_estabelecimento] %>
+  </div>
+  <div class="field">
+    <%= f.label "Observação", :style => 'color:#228B22;' %><br />
+    <%= f.text_field :obscai, :style => 'background:yellow; color:000; width:510px; height:40px;'  %>
+  </div>
+  <div class="field">
+
+    <%= f.hidden_field :hormov, value: Time.now %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Gravar" %>
+    <%= link_to "Processar", root_path , :class => "bnt" %>
+    <%= link_to "Imprimir", root_path , :class => "bnt" %>
+  </div>
+<% end %>
+</div>

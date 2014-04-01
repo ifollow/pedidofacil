@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datcai: 2014-03-28
+  dinheiro: 9.99
+  cheque: 9.99
+  cartao: 9.99
+  prazo: 9.99
+  pagtodiv: 9.99
+  receb: 9.99
+  salant: 9.99
+  salprox: 9.99
+  salcaixa: 9.99
+  estabelecimento_id: 
+  obscai: MyString
+  hormov: 2014-03-28 20:33:29
+
+two:
+  datcai: 2014-03-28
+  dinheiro: 9.99
+  cheque: 9.99
+  cartao: 9.99
+  prazo: 9.99
+  pagtodiv: 9.99
+  receb: 9.99
+  salant: 9.99
+  salprox: 9.99
+  salcaixa: 9.99
+  estabelecimento_id: 
+  obscai: MyString
+  hormov: 2014-03-28 20:33:29

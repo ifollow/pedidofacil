@@ -24,7 +24,7 @@ pre {
 a {
   color: #000;
   &:visited {
-    color: #666;
+    color: #000;
   }
   &:hover {
     color: #fff;
@@ -88,9 +88,7 @@ footer img{ }
   width:400px;
   height:190px;
   background:white;
-  position:absolute;
-  top:230px;
-  left:450px;
+  margin-left:300px;
 }
 
 #boxacesso h2{
@@ -695,7 +693,7 @@ input[type="submit"]{
   padding:10px;
   background:#01334e;
   border:none;
-  height:25px;
+  height:30px;
   color:white;
 }
 a.tooltip{
@@ -754,3 +752,15 @@ color: #D8000C;
 background-color: #FFBABA;
 background-image: url('error.png');
 }
+.bnt{
+   padding:5px;
+   text-decoration:none;
+  background:#01334e;
+  border:none;
+  height:30px;
+  color:white;
+}
+
+a .bnt{color:white;}
+
+.bnt a:hover{color:#eee;}

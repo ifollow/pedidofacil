@@ -1,0 +1,69 @@
+<%= form_for(@caixaano) do |f| %>
+  <% if @caixaano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@caixaano.errors.count, "error") %> prohibited this caixaano from being saved:</h2>
+
+      <ul>
+      <% @caixaano.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :datcai %><br>
+    <%= f.date_select :datcai %>
+  </div>
+  <div class="field">
+    <%= f.label :dinheiro %><br>
+    <%= f.text_field :dinheiro %>
+  </div>
+  <div class="field">
+    <%= f.label :cheque %><br>
+    <%= f.text_field :cheque %>
+  </div>
+  <div class="field">
+    <%= f.label :cartao %><br>
+    <%= f.text_field :cartao %>
+  </div>
+  <div class="field">
+    <%= f.label :prazo %><br>
+    <%= f.text_field :prazo %>
+  </div>
+  <div class="field">
+    <%= f.label :pagtodiv %><br>
+    <%= f.text_field :pagtodiv %>
+  </div>
+  <div class="field">
+    <%= f.label :receb %><br>
+    <%= f.text_field :receb %>
+  </div>
+  <div class="field">
+    <%= f.label :salant %><br>
+    <%= f.text_field :salant %>
+  </div>
+  <div class="field">
+    <%= f.label :salprox %><br>
+    <%= f.text_field :salprox %>
+  </div>
+  <div class="field">
+    <%= f.label :salcaixa %><br>
+    <%= f.text_field :salcaixa %>
+  </div>
+  <div class="field">
+    <%= f.label :estabelecimento_id %><br>
+    <%= f.text_field :estabelecimento_id %>
+  </div>
+  <div class="field">
+    <%= f.label :obscai %><br>
+    <%= f.text_field :obscai %>
+  </div>
+  <div class="field">
+    <%= f.label :hormov %><br>
+    <%= f.time_select :hormov %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

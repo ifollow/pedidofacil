@@ -29,7 +29,7 @@ class CardapiosController < ApplicationController
 
     respond_to do |format|
       if @cardapio.save
-        format.html { redirect_to @cardapio, notice: 'Cardapio was successfully created.' }
+        format.html { redirect_to cardapios_url, notice: 'Cardapio criado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @cardapio }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class CardapiosController < ApplicationController
   def update
     respond_to do |format|
       if @cardapio.update(cardapio_params)
-        format.html { redirect_to @cardapio, notice: 'Cardapio was successfully updated.' }
+        format.html { redirect_to cardapios_url, notice: 'Cardapio atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
