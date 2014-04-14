@@ -1,7 +1,7 @@
 class FechamentoController < ApplicationController
   def mesa
   	 @mesa = Mesa.find(params[:id])
-  	 @pedidos = Pedido.where("mesa_id =? AND estabelecimento_id =? AND created_at >=? AND flag =?", params[:id], session[:id_estabelecimento], DateTime.now.beginning_of_day, false)
+  	 @pedidos = Pedido.where("mesa_id =? AND estabelecimento_id =? AND Date(created_at) >=? AND flag =?", params[:id], session[:id_estabelecimento], Date.today, false)
   end
 
   def balcao

@@ -4,7 +4,7 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
-    @pedidos = Pedido.where("estabelecimento_id =? AND created_at >?", session[:id_estabelecimento], DateTime.now.beginning_of_day)
+    @pedidos = Pedido.where("estabelecimento_id =? AND Date(created_at) = ? AND flag =?", session[:id_estabelecimento], Date.today, false)
   end
 
   # GET /pedidos/1

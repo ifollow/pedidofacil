@@ -1,6 +1,7 @@
 Restaurante::Application.routes.draw do
   
  
+  get "conta/imprimir"
   resources :vendabalcaos
 
   resources :vendamesas
@@ -40,6 +41,8 @@ Restaurante::Application.routes.draw do
   get '/fechamento/mesa/:id', to: 'fechamento#mesa', as: 'fechamento_mesa'
 
   get '/fechamento/balcao/:id', to: 'fechamento#balcao', as: 'fechamento_balcao'  
+
+  get '/conta/imprimir/:id', to: 'conta#imprimir', as: 'conta'
 
  
 end

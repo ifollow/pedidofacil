@@ -1,0 +1,3 @@
+<% unless @pedidos.empty? %>
+$(".pedidos").append("<%=raw escape_javascript(render(@pedidos)) %>");
+<% end %>

@@ -152,19 +152,14 @@ window.onload = function()
         }      
 }
 
-  var url = location.href; //pega endereço que esta no navegador
-  url = url.split("/"); //quebra o endeço de acordo com a / (barra)
-  //alert(url[3]); // retorna a parte www.endereco.com.br
-
-   if (url[3] == 'pedidos') {
-    window.onload = function () {
-
-    setTimeout('location.reload();', 5000);
-}
-   }
-
 </script>
+<script language="Javascript">
 
+window.onload = function () {
+
+setTimeout('location.reload();', 5000);
+}
+</script>
 
 </body>
 </html>

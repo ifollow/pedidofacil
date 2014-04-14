@@ -1,7 +1,8 @@
+
 <%= render 'shared/menu' %>
 <div class="container">
 
-<table id="pattern-style-b" summary="Meeting Results">
+<table id="pattern-style-b" summary="Meeting Results" class="pedidos">
   <thead>
     <tr>
       <th scope="col">Produto</th>
@@ -16,9 +17,10 @@
   </thead>
 
   <tbody>
+  <div>
     <% @pedidos.each do |pedido| %>
-      <tr>
-        <td><%= pedido.produto.nome %></td>
+      <tr  id="pedidos" data-id="<%= pedido.id %>" data-time="<%= pedido.created_at.to_i %>">
+        <td ><%= pedido.produto.nome %></td>
         <td><%= pedido.mesa.numero %></td>
         <td><%= pedido.observacao %></td>
        
@@ -38,10 +40,14 @@
         
       </tr>
     <% end %>
+    </div>
   </tbody>
 </table>
+
 
 <br>
 
 <%= link_to 'Realizar pedido', new_pedido_path, :style => "width:130px; margin-left:40px; padding-left:10px; padding-top:10px; height:20px; border:none; background:#01334e; color:white; float:left; text-decoration:none;" %>
 </div>
+
+

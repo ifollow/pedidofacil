@@ -28,10 +28,13 @@ class VendabalcaosController < ApplicationController
 
     respond_to do |format|
       if @vendabalcao.save
+        @mesa = Mesa.last
+        @pedidos = Pedido.where("mesa_id = ? AND flag =?", @mesa, false)
 
         @pedidos.each do |pedido|
          pedido.update_attributes(flag: true)
         end
+
         format.html { redirect_to pedidos_url, notice: 'Vendabalcao was successfully created.' }
         format.json { render action: 'show', status: :created, location: @vendabalcao }
       else

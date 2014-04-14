@@ -11,7 +11,7 @@ class MesasController < ApplicationController
   # GET /mesas/1
   # GET /mesas/1.json
   def show
-    @pedidos = Pedido.where("mesa_id =? AND estabelecimento_id =? AND created_at >=? AND flag =?", params[:id], session[:id_estabelecimento], DateTime.now.beginning_of_day, false)
+    @pedidos = Pedido.where("mesa_id =? AND estabelecimento_id =? AND Date(created_at) >=? AND flag =?", params[:id], session[:id_estabelecimento], Date.today, false)
   end
 
   # GET /mesas/new

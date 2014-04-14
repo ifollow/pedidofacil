@@ -1,0 +1,33 @@
+<div>
+
+<h1 style="color:#000;">------------------------------------------------------------------------------------------------------------------</h1>	
+<% @estabelecimento = Estabelecimento.where("id = ?", session[:id_estabelecimento]).first %>
+
+<center><h2 style="color:#000;"> <%= @estabelecimento.nome %> </h2></center>
+<hr style="border:1px solid black;" />
+
+</div>
+<% @pedidos.each do |pedido| %>
+
+<% @quantidade = pedido.quantidade %>
+    <% @valor_pedido = pedido.produto.preco.to_f * @quantidade %>
+    <% @total = @total.to_f + @valor_pedido.to_f %>
+
+<% if @quantidade > 1 %>
+
+<% for i in 1..@quantidade do %>
+<p>Produto -------------------  <%= pedido.produto.nome %> - <%= number_to_currency_br(pedido.produto.preco) %></p>
+<% end %>
+
+<% else %>
+
+<p>Produto -------------------  <%= pedido.produto.nome %> - <%= number_to_currency_br(pedido.produto.preco) %></p>
+<% end %>
+
+<% end %>
+<hr style="border:1px solid black;" />
+<h2 style="color:#000;">Total = <%= number_to_currency_br(@total) %></h2>
+
+<h1 style="color:#000;">------------------------------------------------------------------------------------------------------------------</h1>	
+
+<%= link_to "Voltar", fechamento_mesa_path(@mesa) %><br />
